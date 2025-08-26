@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Exchange>
+    <Header>
+        <MessageId>f7e2d0b8-9c8b-4f0e-9a5e-2f1a6e7a1b34</MessageId>
+        <CreatedAt>2025-08-26T12:30:00Z</CreatedAt>
+        <Urgent>true</Urgent>
+    </Header>
+    <Buyer>
+        <Name>Acme GmbH</Name>
+        <Address>
+            <Line1>Hauptstrasse 12</Line1>
+            <City>Munich</City>
+            <PostalCode>80331</PostalCode>
+            <Country>DE</Country>
+        </Address>
+    </Buyer>
+    <Seller>
+        <Name>Globex SA</Name>
+        <Address>
+            <Line1>10 Rue de Rivoli</Line1>
+            <City>Paris</City>
+            <PostalCode>75001</PostalCode>
+            <Country>FR</Country>
+        </Address>
+    </Seller>
+    <Order id="ORD-2025-08-26-00042" currency="EUR">
+        <OrderDate>2025-08-26</OrderDate>
+        <RequestedShipDate>2025-08-28</RequestedShipDate>
+        <Lines>
+            <Line number="1">
+                <Sku>SKU-AX9</Sku>
+                <Description>Industrial Widget A</Description>
+                <Quantity>12</Quantity>
+                <UnitPrice>49.95</UnitPrice>
+                <WeightKg>6.40</WeightKg>
+            </Line>
+            <Line number="2">
+                <Sku>SKU-BX2</Sku>
+                <Description>Replacement Nozzle</Description>
+                <Quantity>4</Quantity>
+                <UnitPrice>15.25</UnitPrice>
+                <Backorder>true</Backorder>
+            </Line>
+        </Lines>
+        <Totals>
+            <Subtotal>959.20</Subtotal>
+            <Tax>182.35</Tax>
+            <GrandTotal>1141.55</GrandTotal>
+        </Totals>
+    </Order>
+    <Payment>
+        <Method>SEPA</Method>
+        <Amount currency="EUR">1141.55</Amount>
+        <DueDate>2025-09-02</DueDate>
+        <RemittanceInformation>INV-2025-08-26-00042</RemittanceInformation>
+    </Payment>
+</Exchange>

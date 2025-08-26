@@ -1,0 +1,22 @@
+<jxb:bindings xmlns:jxb="https://jakarta.ee/xml/ns/jaxb"
+              xmlns:xs="http://www.w3.org/2001/XMLSchema"
+              jxb:version="3.0">
+
+  <jxb:globalBindings>
+    <!-- Map xs:byte and xs:short to int -->
+    <jxb:javaType name="int" xmlType="xs:byte"
+                  parseMethod="jakarta.xml.bind.DatatypeConverter.parseInt"
+                  printMethod="jakarta.xml.bind.DatatypeConverter.printInt"/>
+    <jxb:javaType name="int" xmlType="xs:short"
+                  parseMethod="jakarta.xml.bind.DatatypeConverter.parseInt"
+                  printMethod="jakarta.xml.bind.DatatypeConverter.printInt"/>
+
+    <!-- Map unsigned types to int -->
+    <jxb:javaType name="int" xmlType="xs:unsignedByte"
+                  parseMethod="jakarta.xml.bind.DatatypeConverter.parseInt"
+                  printMethod="jakarta.xml.bind.DatatypeConverter.printInt"/>
+    <jxb:javaType name="int" xmlType="xs:unsignedShort"
+                  parseMethod="jakarta.xml.bind.DatatypeConverter.parseInt"
+                  printMethod="jakarta.xml.bind.DatatypeConverter.printInt"/>
+  </jxb:globalBindings>
+</jxb:bindings>
