@@ -8,12 +8,29 @@
                            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
+
+    <!-- Resource beans -->
+    <!-- If editing, also edit pom.xml -->
+    <bean id="inputXml" class="org.springframework.core.io.ClassPathResource">
+        <constructor-arg value="input-xml/example.xml"/>
+    </bean>
+
+    <bean id="schemaXsd" class="org.springframework.core.io.ClassPathResource">
+        <constructor-arg value="generated-xsd/schema0.xsd"/>
+    </bean>
+
+    <!-- /Resource beans -->
+
     <bean id="jaxbLoader" class="com.xsdtoxml.main.helper.JaxbGenericLoader">
         <constructor-arg value="com.xsdtoxml.main.generated"/>
     </bean>
 
-    <bean id="objectController" class="com.xsdtoxml.main.api.ObjectController">
+    <bean id="objectController" class="com.xsdtoxml.main.api.ExchangeController">
         <constructor-arg ref="jaxbLoader"/>
+        <constructor-arg type="org.springframework.core.io.Resource"
+                         value="classpath:input-xml/example.xml"/>
+        <constructor-arg type="org.springframework.core.io.Resource"
+                         value="classpath:generated-xsd/schema0.xsd"/>
     </bean>
 
     <mvc:annotation-driven/>

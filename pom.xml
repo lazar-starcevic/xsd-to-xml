@@ -14,6 +14,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>7.0.0-M8</spring.version>
         <resources.dir>${project.basedir}/src/main/resources</resources.dir>
+        <!-- If editing, also edit applicationContext.xml -->
+        <xml.input.rel>input-xml/example.xml</xml.input.rel>
+        <xsd.schema.rel>generated-xsd/schema0.xsd</xsd.schema.rel>
     </properties>
 
     <dependencies>
@@ -37,6 +40,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- JAXB -->
@@ -84,6 +93,20 @@
             <artifactId>xmlbeans</artifactId>
             <version>5.3.0</version>
         </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>6.0.0-M2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.19.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -110,7 +133,7 @@
                                 <argument>${resources.dir}/generated-xsd/</argument>
                                 <argument>-validate</argument>
                                 <argument>-verbose</argument>
-                                <argument>${resources.dir}/example.xml</argument>
+                                <argument>${resources.dir}/${xml.input.rel}</argument>
                             </arguments>
                         </configuration>
                     </execution>
@@ -131,7 +154,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${resources.dir}/generated-xsd/schema0.xsd</source>
+                                <source>${resources.dir}/${xsd.schema.rel}</source>
                             </sources>
                             <xjbSources>
                                 <xjbSource>${resources.dir}/jaxb-config/bindings.xjb</xjbSource>
@@ -146,6 +169,16 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- Testing -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.3</version>
+                <configuration>
+                    <useModulePath>false</useModulePath>
+                </configuration>
             </plugin>
         </plugins>
     </build>
